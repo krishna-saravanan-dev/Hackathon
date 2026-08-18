@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NEXUS EDGE</title>
+<link rel="stylesheet" href="/assets/style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <div class="brand">NEXUS <span>EDGE</span></div>
+      <div class="badges">
+        <span class="badge sim">SIMULATED estate — no physical infrastructure attached</span>
+      </div>
+      <div class="actions">
+        <button id="btn-add-node">+ Add Building</button>
+        <button id="btn-spike">Inject Spike</button>
+        <button id="btn-clear">Clear Faults</button>
+        <button id="btn-reset">Reset</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="twin-wrap">
+        <canvas id="twin"></canvas>
+        <div id="twin-hint">Drag to orbit · Scroll to zoom · Click a building for detail</div>
+      </div>
+
+      <aside id="sidebar">
+        <section class="panel">
+          <h2>SLA Status</h2>
+          <div id="sla-list"></div>
+        </section>
+        <section class="panel">
+          <h2>Node Utilisation <span class="prov">DERIVED</span></h2>
+          <canvas id="chart-util" width="280" height="140"></canvas>
+        </section>
+        <section class="panel">
+          <h2>Migrations</h2>
+          <div id="mig-list"></div>
+        </section>
+        <section class="panel" id="detail-panel" hidden>
+          <h2 id="detail-title">Node</h2>
+          <div id="detail-body"></div>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <div id="modal-add" class="modal" hidden>
+    <div class="modal-card">
+      <h3>Add Building</h3>
+      <p class="muted">Provisions a new SIMULATED edge node. Breaks byte-identical demo replay until Reset.</p>
+      <label>Name <input id="in-name" placeholder="Ahmedabad Edge" /></label>
+      <label>City <input id="in-city" placeholder="Ahmedabad" /></label>
+      <label>Lat <input id="in-lat" type="number" step="0.0001" placeholder="23.0225" /></label>
+      <label>Lon <input id="in-lon" type="number" step="0.0001" placeholder="72.5714" /></label>
+      <div class="modal-actions">
+        <button id="btn-cancel">Cancel</button>
+        <button id="btn-confirm">Provision</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

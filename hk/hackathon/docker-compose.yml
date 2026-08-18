@@ -1,0 +1,15 @@
+# NEXUS EDGE — one container, zero configuration.
+#   docker compose up --build   → http://localhost:8000
+#
+# Note: this build has no database — WorldState lives in memory and resets
+# on restart (or via POST /api/reset). That matches the project's honesty
+# rule: nothing here pretends to be persisted infrastructure it isn't.
+services:
+  nexus:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      NEXUS_LOG_LEVEL: INFO
+      NEXUS_API_KEY: ""   # set to require X-API-Key on mutating routes
+    restart: unless-stopped
